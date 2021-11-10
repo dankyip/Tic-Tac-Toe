@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box accounts for any addional paddings and 
+    borders that may have been added alongside the width of the element. */
+    box-sizing: border-box; 
+}
+
+body {
+    color: #545454;
+    font-family: sans-serif;
+    /* display: flex works as a display block-inline.*/
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background: #14bdac;
+    margin: 25px;
+    padding: 50px;
+    border-radius: 25px;
+}
+
+.title {
+    text-align: center;
+}
+
+.title span {
+    color: honeydew;
+}
+
+.status-button {
+    display: flex;
+    justify-content: space-around;
+    margin: 25px 0 50px;
+    font-size: 25px;
+}
+
+.status span {
+    color: honeydew;
+}
+
+.reset-button {
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    color: honeydew;
+}
+
+.game-grid,
+.fading {
+    display: grid;
+    /* whenever using a grid you have to specify the amount of rows and 
+    columns you need by using grid-template-columns, and grid-template-rows. */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    /* grid-gap: gives gaps to each of our pixels. */
+    grid-gap: 5px;
+    background: #0da192;
+}
+
+.game-grid {
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fading {
+    opacity: 1;
+    transition: opacity 0.9s ease-in-out;
+}
+
+.won {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.game-cell {
+    height: 100px;
+    width: 100px;
+    background: #14bdac;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.x::after {
+    content: "✕";
+    font-size: 100px;
+    cursor: default;
+}
+
+.o::after {
+    content: "O";
+    font-size: 100px;
+    color: honeydew;
+    cursor: default;
+}
+
+.non-active {
+    cursor: default;
+}
+
+@media only screen and (max-width: 1024px) {
+    .game-grid {
+        margin-top: 25px;
+        grid-gap: 5px;
+    }
+
+    .game-cell {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .container {
+        margin: 25px;
+        padding: 25px;
+    }
+
+    .game-cell {
+        height: 100px;
+        width: 100px;
+    }
+
+    .x::after {
+        font-size: 100px;
+    }
+
+    .o::after {
+        font-size: 100px;
+    }
+}
